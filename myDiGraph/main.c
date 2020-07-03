@@ -12,6 +12,9 @@
 *    jump value added or decremented to this node's current index, representing the
 *    connected edge from this node to the next.
 *
+* ReadCSV function is based on https://codingboost.com/parsing-csv-files-in-c
+*
+*
 * "An advanced beginner, C is what I see now"
 * Soumik Ranjan Dasgupta
 */
@@ -30,9 +33,18 @@ void initAdjMat(int adjMat[MAX_NUM_NODES][MAX_NUM_NODES]) {
     }
 }
 
-void readCSV(const char* fileName) {
-    // Based on : https://codingboost.com/parsing-csv-files-in-c
-   
+#define MAX_BUF_SIZE (4096)
+
+void readCSV(const char* fileName,  /* Input        : CSV File name to parse */
+             int inputArray[],      /* Input/Output : Buffer to fill in */
+             int arrSize,           /* Number of elemenets in inputArray */
+             int* actualArrSize)    /* Actual number of elements read */
+{    
+/*
+Assumptions : 
+- All the string is in one liner. No support currently for multi lines
+- Does not check buffer overrun - Only 1024 bytes available
+*/
     FILE *fp = fopen(fileName, "r");
 
     if (!fp) {
@@ -40,11 +52,11 @@ void readCSV(const char* fileName) {
         return 0;
     }
 
-    char buf[1024];
-    int row_count = 0;
+    char buf[MAX_BUF_SIZE];
+    //int row_count = 0;
     int field_count = 0;
 
-    while (fgets(buf, 1024, fp)) {
+    while (fgets(buf, MAX_BUF_SIZE, fp)) {
         char *pVal = NULL;
         field_count = 0;
         pVal = strtok(buf, ",");
