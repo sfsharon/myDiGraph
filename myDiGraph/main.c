@@ -1,3 +1,21 @@
+/*
+* *****************************************************
+*              myDiGraph main module.
+* *****************************************************
+*
+* Program functionality :
+* -----------------------
+* 1. Receive a vector of non-negative integers
+* 2. Process into a directed graph representation
+* 3. Search for a path from first node to the last.
+*    Each node is connected to two other nodes at most. The node value is the 
+*    jump value added or decremented to this node's current index, representing the
+*    connected edge from this node to the next.
+*
+* "An advanced beginner, C is what I see now"
+* Soumik Ranjan Dasgupta
+*/
+
 #define _CRT_SECURE_NO_DEPRECATE
 #include <stdio.h>
 #include <string.h>
@@ -12,10 +30,10 @@ void initAdjMat(int adjMat[MAX_NUM_NODES][MAX_NUM_NODES]) {
     }
 }
 
-void readCSV() {
+void readCSV(const char* fileName) {
     // Based on : https://codingboost.com/parsing-csv-files-in-c
    
-    FILE *fp = fopen("myGraph.csv", "r");
+    FILE *fp = fopen(fileName, "r");
 
     if (!fp) {
         printf("Can't open file\n");
@@ -46,13 +64,21 @@ void readCSV() {
 
 int main() {
     printf("My DiGraph tool\n");
+    // myGraph_1 contains a path from first node to the last
+    char* myGraph_1 = "myGraph_1.csv";
+    // myGraph_2 does not contain a path from first node to the last
+    char* myGraph_2 = "myGraph_2.csv";
+
+    readCSV(myGraph_1);
+    readCSV(myGraph_2);
 
     // adjacency matrix object
     int adjMat[MAX_NUM_NODES][MAX_NUM_NODES];
 
     initAdjMat(adjMat);
 
-    readCSV();
+    
 
     return 0;
 }
+
