@@ -24,6 +24,8 @@
 #include <string.h>
 #include <stdlib.h> // for strtol
 
+#include "myStack.h"
+
 #define MAX_NUM_NODES 10
 #define MAX_BUF_SIZE (4096)
 
@@ -109,12 +111,24 @@ int main() {
             inputArray, 
             MAX_BUF_SIZE, 
             &actualArrSize);
-    //readCSV(myGraph_2);
+    //readCSV(myGraph_2,
+    //    inputArray,
+    //    MAX_BUF_SIZE,
+    //    &actualArrSize);
+
+    // Build Stack data structure
+    T_StackType* pMyStack = initNewStack(MAX_NUM_NODES);
+    if (pMyStack == NULL) {
+        printf(">>> myDiGraph main : Error allocating stack\n");
+        return -1;
+    }
 
     // adjacency matrix object
     int adjMat[MAX_NUM_NODES][MAX_NUM_NODES];
 
     initAdjMat(adjMat);
+
+
 
     
 
