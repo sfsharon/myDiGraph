@@ -67,7 +67,7 @@ int adjMat_Build(int adjMat[MAX_NUM_GRAPH_NODES][MAX_NUM_GRAPH_NODES], /* Output
         if (bckJumpVal >= 0)
         {
             // Update the value '1' in appropriate place in the adjMat
-            adjMat[i][fwdJumpVal] = 1;
+            adjMat[i][bckJumpVal] = 1;
         }
     }
     
