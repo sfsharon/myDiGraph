@@ -8,9 +8,14 @@ typedef struct S_StackType
     int top;        // Index to the current top element in stack
     int* items;     // Pointer to array of thw stack's elements
 
-    int(*size)(const struct T_StackType* pSelf);
 } T_StackType;
 
+/* Initialize Stack data structure */
 T_StackType* initNewStack(int capacity);
+
+/* Return the number of elements in stack */
+int myStack_Size(const T_StackType* pSelf);
+
+
 
 #endif

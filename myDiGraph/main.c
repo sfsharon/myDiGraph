@@ -123,6 +123,9 @@ int main() {
         return -1;
     }
 
+    // Test calling a method of object myStack : Stack size
+    int mySize = myStack_Size(pMyStack);
+
     // adjacency matrix object
     int adjMat[MAX_NUM_NODES][MAX_NUM_NODES];
 

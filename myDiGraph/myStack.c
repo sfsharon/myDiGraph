@@ -24,7 +24,7 @@
 
 #include "myStack.h"
 
-int size (const T_StackType* pSelf) {
+int myStack_Size (const T_StackType* pSelf) {
     return (pSelf->top + 1);
 }
 
@@ -33,7 +33,7 @@ T_StackType* initNewStack(int capacity)
     /*
     * Initialize stack management and array data. 
     * An int array the size of 'capcity' for saving integers is created.
-    * Empty stack implies variable 'top' for stack index to be '-1'.
+    * Empty stack implies that the stack index variable 'top' value is '-1'.
     */
 
     // Create object attributes
@@ -42,23 +42,23 @@ T_StackType* initNewStack(int capacity)
     T_StackType* pStack = (T_StackType*)malloc(sizeof(T_StackType));
     // malloc error handling
     if (pStack == NULL) {
-        printf(">>> newStack : Error initializing Stack management data\n");
+        printf(">>> initNewStack : Error initializing Stack management data\n");
         return NULL;
     }
-    // Initialize stacks internal management variables
+    // Initialize Stack's internal management variables
     pStack->maxSize = capacity;
     pStack->top = -1;
     // Allocate memory for the Stack's integer array data
     pStack->items = (int*)malloc(sizeof(int) * capacity);
     // malloc error handling
     if (pStack->items == NULL) {
-        printf(">>> newStack : Error initializing Stack array data\n");
+        printf(">>> initNewStack : Error initializing Stack array data\n");
         return NULL;
     }
 
-    // Assign object's methods
-    // --------------------------------------
-    pStack->size = size;
+    //// Assign object's methods
+    //// --------------------------------------
+    //pStack->size = size;
 }
 
 
