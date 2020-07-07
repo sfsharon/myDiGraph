@@ -116,6 +116,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="adjMatrix.c" />
     <ClCompile Include="csvMng.c" />
     <ClCompile Include="main.c" />
     <ClCompile Include="myStack.c" />
@@ -124,6 +125,7 @@
     <None Include="myGraph.csv" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="adjMatrix.h" />
     <ClInclude Include="csvMng.h" />
     <ClInclude Include="myStack.h" />
   </ItemGroup>

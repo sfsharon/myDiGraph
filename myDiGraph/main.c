@@ -25,29 +25,25 @@
 // User private library headres
 #include "myStack.h"
 #include "csvMng.h"
+#include "adjMatrix.h"
 
-#define MAX_NUM_GRAPH_NODES 10
 
-void initAdjMat(int adjMat[MAX_NUM_GRAPH_NODES][MAX_NUM_GRAPH_NODES]) {
-    for (int i = 0; i < MAX_NUM_GRAPH_NODES; i++) {
-        for (int j = 0; j < MAX_NUM_GRAPH_NODES; j++) {
-            adjMat[i][j] = -1;
-        }
-    }
-}
 
 int main() {
     printf(">>> My DiGraph tool <<<\n");
 
+    // --------------------------------------------
+    // Initialize data 
+    // --------------------------------------------
+    // Integer array of values read from input file
     int intArrayFromFile[MAX_NUM_GRAPH_NODES];
-    int actualArrSize = 0;    
-    // myGraphFileName contains a path from first node to the last
-    char* myGraphFileName = "myGraph_1.csv";
+    int actualArrSize = 0;  
 
-    readCSV(myGraphFileName, 
-            intArrayFromFile, 
-            MAX_NUM_GRAPH_NODES,
-            &actualArrSize);
+    // Adjacency Matrix object
+    int adjMat[MAX_NUM_GRAPH_NODES][MAX_NUM_GRAPH_NODES];
+
+    // File containing a representation of a graph.
+    char* myGraphFileName = "myGraph_1.csv";
 
     // Initialize Stack object
     T_StackType* pMyStack = initNewStack(MAX_NUM_GRAPH_NODES);
@@ -56,13 +52,23 @@ int main() {
         return -1;
     }
 
+    // --------------------------------------------
+    // Build Adjacency Matrix
+    // --------------------------------------------
+    // Read data from file
+    readCSV(myGraphFileName, 
+            intArrayFromFile, 
+            MAX_NUM_GRAPH_NODES,
+            &actualArrSize);
+
+    adjMat_Init(adjMat);
+
+    adjMat_Build(adjMat, intArrayFromFile, actualArrSize); // TODO 
+
     //// Test calling a method of object myStack : Stack size
     //int mySize = myStack_Size(pMyStack);
 
-    // adjacency matrix object
-    int adjMat[MAX_NUM_GRAPH_NODES][MAX_NUM_GRAPH_NODES];
 
-    initAdjMat(adjMat);   
 
     return 0;
 }

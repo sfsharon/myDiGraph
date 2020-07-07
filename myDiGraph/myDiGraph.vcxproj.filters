@@ -24,6 +24,9 @@
     <ClCompile Include="csvMng.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="adjMatrix.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="myGraph.csv">
@@ -35,6 +38,9 @@
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="csvMng.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="adjMatrix.h">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
