@@ -13,6 +13,10 @@
 
 #include "csvMng.h"
 
+/* Module private constant */
+// Buffer size for reading lines from input file
+#define MAX_BUF_SIZE (4096)
+
 int readCSV(const char* fileName,   /* Input        : CSV File name to parse                    */
     int inputArray[],               /* Input/Output : Buffer to fill in values from CSV file    */
     int arrSize,                    /* Number of elemenets in inputArray                        */

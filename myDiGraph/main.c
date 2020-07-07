@@ -37,33 +37,27 @@ void initAdjMat(int adjMat[MAX_NUM_GRAPH_NODES][MAX_NUM_GRAPH_NODES]) {
 }
 
 int main() {
-    printf("My DiGraph tool\n");
+    printf(">>> My DiGraph tool <<<\n");
 
-    int inputArray[MAX_BUF_SIZE];
+    int intArrayFromFile[MAX_NUM_GRAPH_NODES];
     int actualArrSize = 0;    
-    // myGraph_1 contains a path from first node to the last
-    char* myGraph_1 = "myGraph_1.csv";
-    // myGraph_2 does not contain a path from first node to the last
-    char* myGraph_2 = "myGraph_2.csv";
+    // myGraphFileName contains a path from first node to the last
+    char* myGraphFileName = "myGraph_1.csv";
 
-    readCSV(myGraph_1, 
-            inputArray, 
-            MAX_BUF_SIZE, 
+    readCSV(myGraphFileName, 
+            intArrayFromFile, 
+            MAX_NUM_GRAPH_NODES,
             &actualArrSize);
-    //readCSV(myGraph_2,
-    //    inputArray,
-    //    MAX_BUF_SIZE,
-    //    &actualArrSize);
 
-    // Build Stack data structure
+    // Initialize Stack object
     T_StackType* pMyStack = initNewStack(MAX_NUM_GRAPH_NODES);
     if (pMyStack == NULL) {
         printf(">>> myDiGraph main : Error allocating stack\n");
         return -1;
     }
 
-    // Test calling a method of object myStack : Stack size
-    int mySize = myStack_Size(pMyStack);
+    //// Test calling a method of object myStack : Stack size
+    //int mySize = myStack_Size(pMyStack);
 
     // adjacency matrix object
     int adjMat[MAX_NUM_GRAPH_NODES][MAX_NUM_GRAPH_NODES];
