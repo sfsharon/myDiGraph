@@ -17,6 +17,20 @@
 *
 * "An advanced beginner, C is what I see now"
 * Soumik Ranjan Dasgupta
+*
+* Test cases :
+* 1. Empty array
+* 2. Input array larger then the maximum supported size
+* 3. Array with self loop - Index zero. Subcases :
+*       2.1 Zero index at the start of the array
+*       2.2 Zero index at the end of the array
+*       2.3 Zero index at the middle of the array
+*       2.4 All of the array is zero
+* 4. Out of bound indices 
+*       3.1 Out of bound index at the start of the array
+*       3.2 Out of bound index at the end of the array
+*       3.3 Out of bound index at the middle of the array
+* 5. Randomly generated array - Check validity against python script ? Monte-carlo testing ?
 */
 
 #define _CRT_SECURE_NO_DEPRECATE
@@ -68,8 +82,6 @@ int main() {
 
     //// Test calling a method of object myStack : Stack size
     //int mySize = myStack_Size(pMyStack);
-
-
 
     return 0;
 }
