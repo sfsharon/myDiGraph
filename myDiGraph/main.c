@@ -77,9 +77,12 @@ int main() {
             MAX_NUM_GRAPH_NODES,
             &actualArrSize);
 
-
+    // Build Adjacency Matrix
     adjMat_Build(adjMat, intArrayFromFile, actualArrSize); // TODO 
 
+    // Print Adjacency Matrix
+    adjMat_Print(adjMat, actualArrSize);
+    
     //// Test calling a method of object myStack : Stack size
     //int mySize = myStack_Size(pMyStack);
 

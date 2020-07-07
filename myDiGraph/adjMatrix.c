@@ -73,3 +73,26 @@ int adjMat_Build(int adjMat[MAX_NUM_GRAPH_NODES][MAX_NUM_GRAPH_NODES], /* Output
     
     return 0;
 }
+
+void adjMat_Print(const int adjMat[MAX_NUM_GRAPH_NODES][MAX_NUM_GRAPH_NODES], int actualArrSize)
+{
+    // Print column header
+    printf("  ");
+    for (int k = 0; k < actualArrSize; k++)
+    {
+        printf("%d\t", k);
+    }
+    printf("\n  -------------------------------------------------------\n");
+
+    // Print rows header
+    /*printf("\t");*/
+    for (int i = 0; i < actualArrSize; i++)
+    {
+        printf("%d|", i);
+        for (int j = 0; j < actualArrSize; j++)
+        {
+            printf("%d\t", adjMat[i][j]);
+        }
+        printf("\n");
+    }
+}
