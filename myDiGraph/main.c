@@ -42,6 +42,8 @@ int main() {
     // Adjacency Matrix object
     int adjMat[MAX_NUM_GRAPH_NODES][MAX_NUM_GRAPH_NODES];
 
+    adjMat_Init(adjMat);
+
     // File containing a representation of a graph.
     char* myGraphFileName = "myGraph_1.csv";
 
@@ -61,7 +63,6 @@ int main() {
             MAX_NUM_GRAPH_NODES,
             &actualArrSize);
 
-    adjMat_Init(adjMat);
 
     adjMat_Build(adjMat, intArrayFromFile, actualArrSize); // TODO 
 
