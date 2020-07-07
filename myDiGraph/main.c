@@ -68,6 +68,12 @@ int main() {
         return -1;
     }
 
+    //// Test calling a method of object myStack : Stack size
+    //int mySize = myStack_Size(pMyStack);
+    myStack_push(pMyStack, 3);
+    myStack_push(pMyStack, 100);
+    myStack_push(pMyStack, 2);
+
     // --------------------------------------------
     // Build Adjacency Matrix
     // --------------------------------------------
@@ -83,8 +89,6 @@ int main() {
     // Print Adjacency Matrix
     adjMat_Print(adjMat, actualArrSize);
     
-    //// Test calling a method of object myStack : Stack size
-    //int mySize = myStack_Size(pMyStack);
 
     return 0;
 }

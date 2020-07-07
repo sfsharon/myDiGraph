@@ -24,10 +24,6 @@
 
 #include "myStack.h"
 
-int myStack_Size (const T_StackType* pSelf) {
-    return (pSelf->top + 1);
-}
-
 T_StackType* initNewStack(int capacity)
 {
     /*
@@ -55,10 +51,51 @@ T_StackType* initNewStack(int capacity)
         printf(">>> initNewStack : Error initializing Stack array data\n");
         return NULL;
     }
-
-    //// Assign object's methods
-    //// --------------------------------------
-    //pStack->size = size;
 }
 
+int myStack_Size(const T_StackType* pSelf) {
+    return (pSelf->top + 1);
+}
 
+int myStack_isEmpty(const T_StackType* pSelf) {
+    /* Utility function to check if the stack is empty */
+    return (pSelf->top == -1);
+}
+
+int myStack_isFull(const T_StackType* pSelf) {
+    /* Utility function to check if the stack is full */
+    return (pSelf->top == pSelf->maxSize -1);
+}
+
+void myStack_push(T_StackType* pSelf, int x) {
+    /* Utility function to add an element x in the stack */
+
+    // Verify stack is not full
+    if (myStack_isFull(pSelf))
+    {
+        printf(">>> myStack_push : Overflow. Terminating\n");
+        exit(EXIT_FAILURE);
+    }
+
+    printf(">>> myStack_push : Inserting %d\n", x);
+
+    // Add an element, and increment the top index
+    pSelf->top++;
+    pSelf->items[pSelf->top] = x;
+
+}
+
+int myStack_peek(const T_StackType* pSelf)
+    /* Utility function to return the top element in the stack */
+{
+    if (!myStack_isEmpty(pSelf))
+    {
+        return (pSelf->items[pSelf->top]);
+    }
+    else
+    { 
+        printf(">>> myStack_peek error : Stack is empty\n");
+        exit(EXIT_FAILURE);
+    }
+
+}
