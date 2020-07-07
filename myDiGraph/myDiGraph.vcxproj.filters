@@ -21,6 +21,9 @@
     <ClCompile Include="myStack.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="csvMng.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="myGraph.csv">
@@ -29,6 +32,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="myStack.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="csvMng.h">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>

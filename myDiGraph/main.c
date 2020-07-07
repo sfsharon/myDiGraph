@@ -21,81 +21,20 @@
 
 #define _CRT_SECURE_NO_DEPRECATE
 #include <stdio.h>
-#include <string.h>
-#include <stdlib.h> // for strtol
 
+// User private library headres
 #include "myStack.h"
+#include "csvMng.h"
 
-#define MAX_NUM_NODES 10
-#define MAX_BUF_SIZE (4096)
+#define MAX_NUM_GRAPH_NODES 10
 
-void initAdjMat(int adjMat[MAX_NUM_NODES][MAX_NUM_NODES]) {
-    for (int i = 0; i < MAX_NUM_NODES; i++) {
-        for (int j = 0; j < MAX_NUM_NODES; j++) {
+void initAdjMat(int adjMat[MAX_NUM_GRAPH_NODES][MAX_NUM_GRAPH_NODES]) {
+    for (int i = 0; i < MAX_NUM_GRAPH_NODES; i++) {
+        for (int j = 0; j < MAX_NUM_GRAPH_NODES; j++) {
             adjMat[i][j] = -1;
         }
     }
 }
-
-
-
-int readCSV( const char* fileName,  /* Input        : CSV File name to parse                    */
-             int inputArray[],      /* Input/Output : Buffer to fill in values from CSV file    */
-             int arrSize,           /* Number of elemenets in inputArray                        */
-             int* actualArrSize)    /* Actual number of elements read into inputArray           */
-{    
-/*
-*  Assumption : 
-*  All the strings are in one liner. No support currently for multi lines
-*  Return value : 0 on success
-*                 Non zero error code if an issue encountered
-*/
-    int rVal = 0;                       // Initialize return value to success
-    *actualArrSize = 0;
-
-    FILE *fp = fopen(fileName, "r");
-
-    if (!fp) {
-        printf("Can't open file\n");
-        return 0;
-    }
-
-    char buf[MAX_BUF_SIZE];
-    //int row_count = 0;
-    //int field_count = 0; // represented by *actualArrSize 
-
-    // Iterate over lines
-    while (fgets(buf, MAX_BUF_SIZE, fp)) {
-        // Initialization before processing line
-        char *pVal = NULL;
-        //field_count = 0;
-
-        // Get the first token, if exists
-        pVal = strtok(buf, ",");
-
-        // Iterate over comma separated tokens
-        while (pVal != NULL) {
-            if ((*actualArrSize) >= arrSize)
-            {
-                rVal = -1;
-                printf(">>> readCSV : Error. actualArrSize  %d exceeds array size of %d \n", *actualArrSize, arrSize);
-                break;
-            }
-            else
-            {
-                printf("[%d] %s\n", *actualArrSize, pVal);
-                inputArray[*actualArrSize] = strtol(pVal, NULL, 10);       // String to long conversion
-                // Move to next value
-                pVal = strtok(NULL, ",");
-                (*actualArrSize)++;
-            }
-        } // while(words in line are not empty)
-        //row_count++;
-    } // while(lines in file are not empty)
-
-    fclose(fp);
-}
-
 
 int main() {
     printf("My DiGraph tool\n");
@@ -117,7 +56,7 @@ int main() {
     //    &actualArrSize);
 
     // Build Stack data structure
-    T_StackType* pMyStack = initNewStack(MAX_NUM_NODES);
+    T_StackType* pMyStack = initNewStack(MAX_NUM_GRAPH_NODES);
     if (pMyStack == NULL) {
         printf(">>> myDiGraph main : Error allocating stack\n");
         return -1;
@@ -127,13 +66,9 @@ int main() {
     int mySize = myStack_Size(pMyStack);
 
     // adjacency matrix object
-    int adjMat[MAX_NUM_NODES][MAX_NUM_NODES];
+    int adjMat[MAX_NUM_GRAPH_NODES][MAX_NUM_GRAPH_NODES];
 
-    initAdjMat(adjMat);
-
-
-
-    
+    initAdjMat(adjMat);   
 
     return 0;
 }
