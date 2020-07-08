@@ -97,5 +97,20 @@ int myStack_peek(const T_StackType* pSelf)
         printf(">>> myStack_peek error : Stack is empty\n");
         exit(EXIT_FAILURE);
     }
+}
 
+int myStack_pop(T_StackType* pSelf)
+    /* Utility function to pop top element from the stack */
+{
+    if (myStack_isEmpty(pSelf))
+    {
+        printf(">>> myStack_pop error : Stack is empty\n");
+        exit(EXIT_FAILURE);
+    }
+
+    int rVal = myStack_peek(pSelf);
+    printf(">>> myStack_pop : Removing %d\n", rVal);
+    // Decrementing stack pointer, to perform the required "pop" operation
+    pSelf->top -= 1;
+    return rVal;
 }

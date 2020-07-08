@@ -73,6 +73,12 @@ int main() {
     myStack_push(pMyStack, 3);
     myStack_push(pMyStack, 100);
     myStack_push(pMyStack, 2);
+    myStack_pop(pMyStack);
+    myStack_pop(pMyStack);
+    myStack_pop(pMyStack);
+    myStack_pop(pMyStack);
+    myStack_pop(pMyStack);
+    myStack_pop(pMyStack);
 
     // --------------------------------------------
     // Build Adjacency Matrix
