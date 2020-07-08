@@ -46,19 +46,22 @@
 int main() {
     printf(">>> My DiGraph tool <<<\n");
 
-    // --------------------------------------------
-    // Initialize data 
-    // --------------------------------------------
-    // Integer array of values read from input file
+    /* -----------------------------------------------------
+     *  Initialize Data 
+     * -----------------------------------------------------  */
+    // Integer array of values, read from input file
     int intArrayFromFile[MAX_NUM_GRAPH_NODES];
     int actualArrSize = 0;  
 
     // Adjacency Matrix object
+    // This is the directed graph representation of the input Integer array
+    // Each node has at most two adjacent nodes
     int adjMat[MAX_NUM_GRAPH_NODES][MAX_NUM_GRAPH_NODES];
 
+    // Initialize adjacancy matrix to zeros, meaning no edges 
     adjMat_Init(adjMat);
 
-    // File containing a representation of a graph.
+    // File name, which contains the integer input array 
     char* myGraphFileName = "myGraph_1.csv";
 
     // Initialize Stack object
@@ -70,19 +73,20 @@ int main() {
 
     //// Test calling a method of object myStack : Stack size
     //int mySize = myStack_Size(pMyStack);
-    myStack_push(pMyStack, 3);
-    myStack_push(pMyStack, 100);
-    myStack_push(pMyStack, 2);
-    myStack_pop(pMyStack);
-    myStack_pop(pMyStack);
-    myStack_pop(pMyStack);
-    myStack_pop(pMyStack);
-    myStack_pop(pMyStack);
-    myStack_pop(pMyStack);
+    //myStack_push(pMyStack, 3);
+    //myStack_push(pMyStack, 100);
+    //myStack_push(pMyStack, 2);
+    //myStack_pop(pMyStack);
+    //myStack_pop(pMyStack);
+    //myStack_pop(pMyStack);
+    //myStack_pop(pMyStack);
+    //myStack_pop(pMyStack);
+    //myStack_pop(pMyStack);
 
-    // --------------------------------------------
-    // Build Adjacency Matrix
-    // --------------------------------------------
+
+    /* -----------------------------------------------------
+     *  Build Adjacency Matrix
+     * -----------------------------------------------------  */
     // Read data from file
     readCSV(myGraphFileName, 
             intArrayFromFile, 
@@ -90,7 +94,7 @@ int main() {
             &actualArrSize);
 
     // Build Adjacency Matrix
-    adjMat_Build(adjMat, intArrayFromFile, actualArrSize); // TODO 
+    adjMat_Build(adjMat, intArrayFromFile, actualArrSize); 
 
     // Print Adjacency Matrix
     adjMat_Print(adjMat, actualArrSize);
