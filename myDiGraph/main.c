@@ -37,10 +37,9 @@
 #include <stdio.h>
 
 // User private library headres
-#include "myStack.h"
 #include "csvMng.h"
 #include "adjMatrix.h"
-
+#include "myDFS.h"
 
 
 int main() {
@@ -64,25 +63,6 @@ int main() {
     // File name, which contains the integer input array 
     char* myGraphFileName = "myGraph_1.csv";
 
-    // Initialize Stack object
-    T_StackType* pMyStack = initNewStack(MAX_NUM_GRAPH_NODES);
-    if (pMyStack == NULL) {
-        printf(">>> myDiGraph main : Error allocating stack\n");
-        return -1;
-    }
-
-    //// Test calling a method of object myStack : Stack size
-    //int mySize = myStack_Size(pMyStack);
-    //myStack_push(pMyStack, 3);
-    //myStack_push(pMyStack, 100);
-    //myStack_push(pMyStack, 2);
-    //myStack_pop(pMyStack);
-    //myStack_pop(pMyStack);
-    //myStack_pop(pMyStack);
-    //myStack_pop(pMyStack);
-    //myStack_pop(pMyStack);
-    //myStack_pop(pMyStack);
-
 
     /* -----------------------------------------------------
      *  Build Adjacency Matrix
@@ -99,6 +79,8 @@ int main() {
     // Print Adjacency Matrix
     adjMat_Print(adjMat, actualArrSize);
     
+    // Run DFS traversal
+    myDFS_traverse(adjMat, actualArrSize);
 
     return 0;
 }

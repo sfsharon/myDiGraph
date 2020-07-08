@@ -24,10 +24,10 @@
 
 #include "myStack.h"
 
-T_StackType* initNewStack(int capacity)
+T_StackType* myStack_ctor(int capacity)
 {
     /*
-    * Initialize stack management and array data. 
+    * Stack Constructor - Initialize stack management and array data. 
     * An int array the size of 'capcity' for saving integers is created.
     * Empty stack implies that the stack index variable 'top' value is '-1'.
     */
@@ -51,6 +51,23 @@ T_StackType* initNewStack(int capacity)
         printf(">>> initNewStack : Error initializing Stack array data\n");
         return NULL;
     }
+}
+
+void myStack_dtor(T_StackType* pSelf)
+{
+    /*
+    * Stack Destructor 
+    */
+    if ((pSelf == NULL)         || 
+        (pSelf->items == NULL))
+    {
+        printf(">>> dtorStack : Error. Trying do free an empty buffer\n");
+    }
+    else {
+        // Reverse order of deletion then creation
+        free(pSelf->items);
+        free(pSelf);
+    }   
 }
 
 int myStack_Size(const T_StackType* pSelf) {

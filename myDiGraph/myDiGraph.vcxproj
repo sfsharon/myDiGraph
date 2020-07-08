@@ -119,6 +119,7 @@
     <ClCompile Include="adjMatrix.c" />
     <ClCompile Include="csvMng.c" />
     <ClCompile Include="main.c" />
+    <ClCompile Include="myDFS.c" />
     <ClCompile Include="myStack.c" />
   </ItemGroup>
   <ItemGroup>
@@ -127,6 +128,7 @@
   <ItemGroup>
     <ClInclude Include="adjMatrix.h" />
     <ClInclude Include="csvMng.h" />
+    <ClInclude Include="myDFS.h" />
     <ClInclude Include="myStack.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

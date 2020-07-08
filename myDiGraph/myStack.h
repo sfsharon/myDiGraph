@@ -15,8 +15,11 @@ typedef struct S_StackType
 /* -----------------------------------------------------
  *  Stack object functions
  * -----------------------------------------------------  */
-/* Initialize Stack data structure */
-T_StackType* initNewStack(int capacity);
+/* Constructor Stack */
+T_StackType* myStack_ctor(int capacity);
+
+/* Destructor Stack */
+void myStack_dtor(T_StackType* pSelf);
 
 /* Return the number of elements in stack */
 int myStack_Size(const T_StackType* pSelf);
