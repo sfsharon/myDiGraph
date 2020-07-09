@@ -123,9 +123,6 @@
     <ClCompile Include="myStack.c" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="myGraph.csv" />
-  </ItemGroup>
-  <ItemGroup>
     <ClInclude Include="adjMatrix.h" />
     <ClInclude Include="csvMng.h" />
     <ClInclude Include="myDFS.h" />
