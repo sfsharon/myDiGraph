@@ -1,15 +1,21 @@
 /*
 * *****************************************************
 *              csvMng module.
-* *****************************************************
+* CSV file management
 *
-* CSV file management 
-* -----------------------
+* ReadCSV function is based on https://codingboost.com/parsing-csv-files-in-c
+*
+*
+* "An advanced beginner, C is what I see now"
+* Soumik Ranjan Dasgupta
+
+* *****************************************************
 */
 #define _CRT_SECURE_NO_DEPRECATE
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h> // for strtol
+
 
 #include "csvMng.h"
 
@@ -34,8 +40,8 @@ int readCSV(const char* fileName,   /* Input        : CSV File name to parse    
     FILE *fp = fopen(fileName, "r");
 
     if (!fp) {
-        printf("Can't open file\n");
-        return 0;
+        printf(">>> readCSV : Error. Can't open file %s\n", fileName);
+        return -1;
     }
 
     char buf[MAX_BUF_SIZE];
@@ -55,10 +61,9 @@ int readCSV(const char* fileName,   /* Input        : CSV File name to parse    
         // Iterate over comma separated tokens
         while (pVal != NULL) {
             if ((*actualArrSize) >= arrSize)
-            {
-                rVal = -1;
+            {                
                 printf(">>> readCSV : Error. actualArrSize  %d exceeds array size of %d \n", *actualArrSize, arrSize);
-                break;
+                return -2;
             }
             else
             {
@@ -73,4 +78,6 @@ int readCSV(const char* fileName,   /* Input        : CSV File name to parse    
     } // while(lines in file are not empty)
 
     fclose(fp);
+
+    return 0;
 }

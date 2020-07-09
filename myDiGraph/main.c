@@ -12,12 +12,6 @@
 *    jump value added or decremented to this node's current index, representing the
 *    connected edge from this node to the next.
 *
-* ReadCSV function is based on https://codingboost.com/parsing-csv-files-in-c
-*
-*
-* "An advanced beginner, C is what I see now"
-* Soumik Ranjan Dasgupta
-*
 * Test cases :
 * 1. Empty array
 * 2. Input array larger then the maximum supported size
@@ -72,10 +66,14 @@ int main() {
      *  Build Adjacency Matrix
      * -----------------------------------------------------  */
     // Read data from file
-    readCSV(myGraphFileName, 
-            intArrayFromFile, 
-            MAX_NUM_GRAPH_NODES,
-            &actualArrSize);
+    int rVal = readCSV(myGraphFileName, 
+                       intArrayFromFile, 
+                       MAX_NUM_GRAPH_NODES,
+                       &actualArrSize);
+    if (rVal != 0) {
+        printf(">>> main : Error reading file %s\n", myGraphFileName);
+        return rVal;
+    }
 
     // Build Adjacency Matrix
     adjMat_Build(adjMat, intArrayFromFile, actualArrSize); 

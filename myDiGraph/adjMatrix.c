@@ -76,6 +76,11 @@ int adjMat_Build(int adjMat[MAX_NUM_GRAPH_NODES][MAX_NUM_GRAPH_NODES], /* Output
 
 void adjMat_Print(const int adjMat[MAX_NUM_GRAPH_NODES][MAX_NUM_GRAPH_NODES], int actualArrSize)
 {
+    if (actualArrSize == 0) {
+        printf(">>> adjMat_Print : Empty Matrix\n");
+        return;
+    }
+
     printf(">>> adjMat_Print \n");
 
     // Print column header
