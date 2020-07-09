@@ -11,21 +11,6 @@
 *    Each node is connected to two other nodes at most. The node value is the 
 *    jump value added or decremented to this node's current index, representing the
 *    connected edge from this node to the next.
-*
-* Test cases :
-* 1. Empty array
-* 2. Input array larger then the maximum supported size
-* 3. Array with self loop - Index zero. Subcases :
-*       2.1 Zero index at the start of the array
-*       2.2 Zero index at the end of the array
-*       2.3 Zero index at the middle of the array
-*       2.4 All of the array is zero
-* 4. Out of bound indices of the input array
-*       3.1 Out of bound index at the start of the array
-*       3.2 Out of bound index at the end of the array
-*       3.3 Out of bound index at the middle of the array
-* 5. calling myDFS_traverse() with out of bounds for srcVertex and dstVertex.
-* 6. Randomly generated array - Check validity against python script ? Monte-carlo testing ?
 */
 
 #define _CRT_SECURE_NO_DEPRECATE
@@ -38,7 +23,7 @@
 #include "myDFS.h"
 
 int main(int argc, char **argv) {
-    printf(">>> My DiGraph Search Path tool <<<\n");
+    //printf(">>> My DiGraph Search Path tool <<<\n");
 
 
     if (argc != 2) {
@@ -82,21 +67,13 @@ int main(int argc, char **argv) {
     // Build Adjacency Matrix
     adjMat_Build(adjMat, intArrayFromFile, actualArrSize); 
 
-    // Print Adjacency Matrix
-    adjMat_Print(adjMat, actualArrSize);
+    // Print Adjacency Matrix - DEBUG
+    //adjMat_Print(adjMat, actualArrSize);
     
     // Run DFS traversal and test if path exists from source Vertex '0'
     // to destination (actualArrSize - 1) 
     rVal = myDFS_findPath(adjMat, actualArrSize, 0, (actualArrSize - 1));
 
-    // Print algorithm results
-    if (rVal == 0) {
-        printf(">>> main : Found path\n");
-    }
-    else  {
-        printf(">>> main : No path\n");
-    }
-    
 
     return rVal;
 }

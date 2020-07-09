@@ -41,7 +41,7 @@ int readCSV(const char* fileName,   /* Input        : CSV File name to parse    
 
     if (!fp) {
         printf(">>> readCSV : Error. Can't open file %s\n", fileName);
-        return -1;
+        return 1;
     }
 
     char buf[MAX_BUF_SIZE];

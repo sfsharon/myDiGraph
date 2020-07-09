@@ -44,7 +44,7 @@ int adjMat_Build(int adjMat[MAX_NUM_GRAPH_NODES][MAX_NUM_GRAPH_NODES], /* Output
     {
         printf(">>> adjMat_Build : ERROR - actualArrSize %d larger then MAX_NUM_GRAPH_NODES %d\n", 
                 actualArrSize, MAX_NUM_GRAPH_NODES);
-        return -1;
+        return 1;
     }
 
     // Traverse the inputArray, and update adjMat accordingly

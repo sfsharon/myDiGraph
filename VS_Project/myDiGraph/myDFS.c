@@ -37,7 +37,7 @@ int myDFS_findPath(int adjMat[MAX_NUM_GRAPH_NODES][MAX_NUM_GRAPH_NODES],
         (actualArrSize >= MAX_NUM_GRAPH_NODES))
     {
         printf(">>> myDFS_traverse : Number of nodes %d is out of range\n", actualArrSize);
-        return -1;
+        return 1;
     }
 
     if ((srcVertex < 0) || (srcVertex >= actualArrSize) ||
@@ -64,14 +64,16 @@ int myDFS_findPath(int adjMat[MAX_NUM_GRAPH_NODES][MAX_NUM_GRAPH_NODES],
     T_StackType* pMyStack = myStack_ctor(actualArrSize);
     if (pMyStack == NULL) {
         printf(">>> myDFS_traverse : Error allocating stack\n");
-        return -1;
+        return 1;
     }
 
     /* -----------------------------------------------------
     *  Graph Traversal
     * -----------------------------------------------------  */
-    printf(">>> myDFS_traverse : Searching for a path beteen start Vertex %d and destination Vertex %d\n",
-            srcVertex, dstVertex);
+
+    // DEBUG
+    //printf(">>> myDFS_traverse : Searching for a path beteen start Vertex %d and destination Vertex %d\n",
+            //srcVertex, dstVertex);
 
     // Setup - Insert the first node which is in index '0' into the stack
     myStack_push(pMyStack, srcVertex);
@@ -85,9 +87,11 @@ int myDFS_findPath(int adjMat[MAX_NUM_GRAPH_NODES][MAX_NUM_GRAPH_NODES],
         if (visitedNode[currNode] == 0) {
 
             // Visiting a node
-            printf(">>> myDFS_traverse : Visiting node : %d\n", currNode);
+            // DEBUG
+            //printf(">>> myDFS_traverse : Visiting node : %d\n", currNode);
             if (currNode == dstVertex) {
-                printf(">>> myDFS_traverse : Found destination node.\n");
+                // DEBUG
+                //printf(">>> myDFS_traverse : Found destination node.\n");
                 rVal = 0;
                 break;
             }
