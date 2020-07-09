@@ -25,7 +25,7 @@
 
 int readCSV(const char* fileName,   /* Input        : CSV File name to parse                    */
     int inputArray[],               /* Input/Output : Buffer to fill in values from CSV file    */
-    int arrSize,                    /* Number of elemenets in inputArray                        */
+    int arrSize,                    /* Maximum number of elemenets                              */
     int* actualArrSize)             /* Actual number of elements read into inputArray           */
 {
     /*
@@ -62,12 +62,14 @@ int readCSV(const char* fileName,   /* Input        : CSV File name to parse    
         while (pVal != NULL) {
             if ((*actualArrSize) >= arrSize)
             {                
-                printf(">>> readCSV : Error. actualArrSize  %d exceeds array size of %d \n", *actualArrSize, arrSize);
+                printf(">>> readCSV : Error. Input vector exceeds array size of %d \n", arrSize);
                 return -2;
             }
             else
             {
-                printf("[%d] %s\n", *actualArrSize, pVal);
+                // DEBUG
+                //printf("[%d] %s\n", *actualArrSize, pVal);
+
                 inputArray[*actualArrSize] = strtol(pVal, NULL, 10);       // String to long conversion
                 // Move to next value
                 pVal = strtok(NULL, ",");
