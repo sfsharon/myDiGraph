@@ -94,7 +94,8 @@ void myStack_push(T_StackType* pSelf, int x) {
         exit(EXIT_FAILURE);
     }
 
-    printf(">>> myStack_push : Inserting %d\n", x);
+    // Debug print
+    //printf(">>> myStack_push : Inserting %d\n", x);
 
     // Add an element, and increment the top index
     pSelf->top++;
@@ -126,7 +127,10 @@ int myStack_pop(T_StackType* pSelf)
     }
 
     int rVal = myStack_peek(pSelf);
-    printf(">>> myStack_pop : Removing %d\n", rVal);
+
+    // Debug print
+    //printf(">>> myStack_pop : Removing %d\n", rVal);
+
     // Decrementing stack pointer, to perform the required "pop" operation
     pSelf->top -= 1;
     return rVal;

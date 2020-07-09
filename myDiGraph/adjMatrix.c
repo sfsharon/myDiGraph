@@ -42,7 +42,7 @@ int adjMat_Build(int adjMat[MAX_NUM_GRAPH_NODES][MAX_NUM_GRAPH_NODES], /* Output
     // Sanity test - Actual size should always be equal or smaller then MAX_NUM_GRAPH_NODES 
     if (actualArrSize > MAX_NUM_GRAPH_NODES)
     {
-        printf(">> adjMat_Build : ERROR - actualArrSize %d larger then MAX_NUM_GRAPH_NODES %d\n", 
+        printf(">>> adjMat_Build : ERROR - actualArrSize %d larger then MAX_NUM_GRAPH_NODES %d\n", 
                 actualArrSize, MAX_NUM_GRAPH_NODES);
         return -1;
     }
@@ -76,6 +76,8 @@ int adjMat_Build(int adjMat[MAX_NUM_GRAPH_NODES][MAX_NUM_GRAPH_NODES], /* Output
 
 void adjMat_Print(const int adjMat[MAX_NUM_GRAPH_NODES][MAX_NUM_GRAPH_NODES], int actualArrSize)
 {
+    printf(">>> adjMat_Print \n");
+
     // Print column header
     printf("  ");
     for (int k = 0; k < actualArrSize; k++)
@@ -85,7 +87,6 @@ void adjMat_Print(const int adjMat[MAX_NUM_GRAPH_NODES][MAX_NUM_GRAPH_NODES], in
     printf("\n  -------------------------------------------------------\n");
 
     // Print rows header
-    /*printf("\t");*/
     for (int i = 0; i < actualArrSize; i++)
     {
         printf("%d|", i);
@@ -95,4 +96,6 @@ void adjMat_Print(const int adjMat[MAX_NUM_GRAPH_NODES][MAX_NUM_GRAPH_NODES], in
         }
         printf("\n");
     }
+
+    printf("\n");
 }

@@ -39,8 +39,9 @@ int readCSV(const char* fileName,   /* Input        : CSV File name to parse    
     }
 
     char buf[MAX_BUF_SIZE];
-    //int row_count = 0;
-    //int field_count = 0; // represented by *actualArrSize 
+
+    printf("\n");
+    printf(">>> readCSV : Reading file %s\n", fileName);
 
     // Iterate over lines
     while (fgets(buf, MAX_BUF_SIZE, fp)) {

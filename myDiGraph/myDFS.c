@@ -25,20 +25,40 @@
 #include "adjMatrix.h"
 #include "myStack.h"
 
-int myDFS_traverse(int adjMat[MAX_NUM_GRAPH_NODES][MAX_NUM_GRAPH_NODES], 
-                   int actualArrSize)
+int myDFS_isPathExists(int adjMat[MAX_NUM_GRAPH_NODES][MAX_NUM_GRAPH_NODES], 
+                   int actualArrSize, 
+                   int srcVertex, 
+                   int dstVertex)
 {
-    // Visited matrix, to hold if DFS has visited this node.
-    int visitedNode[MAX_NUM_GRAPH_NODES];
-    // Initialize all elements to '0', means element has not been visited
-    memset(visitedNode, 0, sizeof(visitedNode));
-
+    /* -----------------------------------------------------
+    *  Validate input parameters
+    * -----------------------------------------------------  */
     if ((actualArrSize <= 0) ||
         (actualArrSize >= MAX_NUM_GRAPH_NODES))
     {
         printf(">>> myDFS_traverse : Number of nodes %d is out of range\n", actualArrSize);
         return -1;
     }
+
+    if ((srcVertex < 0) || (srcVertex >= actualArrSize) ||
+        (dstVertex < 0) || (dstVertex >= actualArrSize)) {
+        printf(">>> myDFS_traverse : Out of range indices.\n");
+        printf(">>> myDFS_traverse : actualArrSize %d, srcVertex %d, dstVertex %d\n", 
+                actualArrSize, srcVertex, dstVertex);
+        return -1;
+    }
+
+    /* -----------------------------------------------------
+    *  Initialize function objects
+    * -----------------------------------------------------  */
+    // Initialize return value to '0', meaning haven't found a route yet
+    // from source to destination vertex
+    int rVal = 0;
+
+    // Visited matrix, to hold if DFS has visited this node.
+    int visitedNode[MAX_NUM_GRAPH_NODES];
+    // Initialize all elements to '0', means element has not been visited
+    memset(visitedNode, 0, sizeof(visitedNode));
 
     // Initialize Stack object
     T_StackType* pMyStack = myStack_ctor(actualArrSize);
@@ -47,8 +67,14 @@ int myDFS_traverse(int adjMat[MAX_NUM_GRAPH_NODES][MAX_NUM_GRAPH_NODES],
         return -1;
     }
 
+    /* -----------------------------------------------------
+    *  Graph Traversal
+    * -----------------------------------------------------  */
+    printf(">>> myDFS_traverse : Searching for a path beteen start Vertex %d and destination Vertex %d\n",
+            srcVertex, dstVertex);
+
     // Setup - Insert the first node which is in index '0' into the stack
-    myStack_push(pMyStack, 0);
+    myStack_push(pMyStack, srcVertex);
 
     // Graph DFS traversal
     while (myStack_isEmpty(pMyStack) == 0)
@@ -59,7 +85,11 @@ int myDFS_traverse(int adjMat[MAX_NUM_GRAPH_NODES][MAX_NUM_GRAPH_NODES],
         if (visitedNode[currNode] == 0) {
 
             // Visiting a node
-            printf("myDFS_traverse : Visiting node : %d\n", currNode);
+            printf(">>> myDFS_traverse : Visiting node : %d\n", currNode);
+            if (currNode == dstVertex) {
+                rVal = 1;
+                break;
+            }
 
             // Label current node as visited
             visitedNode[currNode] = 1;
@@ -75,7 +105,13 @@ int myDFS_traverse(int adjMat[MAX_NUM_GRAPH_NODES][MAX_NUM_GRAPH_NODES],
         } // If (not visited node)  
     } // while (stack is not empty)
 
-    // Destroy Stack object
-    myStack_dtor(pMyStack);
+    /* -----------------------------------------------------
+    *  Free objects created at the start of function
+    * -----------------------------------------------------  */    
+    myStack_dtor(pMyStack);     // Destroy Stack object
 
+    /* -----------------------------------------------------
+    *  Return result of DFS search
+    * -----------------------------------------------------  */
+    return rVal;
 }

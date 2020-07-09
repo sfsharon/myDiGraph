@@ -26,11 +26,12 @@
 *       2.2 Zero index at the end of the array
 *       2.3 Zero index at the middle of the array
 *       2.4 All of the array is zero
-* 4. Out of bound indices 
+* 4. Out of bound indices of the input array
 *       3.1 Out of bound index at the start of the array
 *       3.2 Out of bound index at the end of the array
 *       3.3 Out of bound index at the middle of the array
-* 5. Randomly generated array - Check validity against python script ? Monte-carlo testing ?
+* 5. calling myDFS_traverse() with out of bounds for srcVertex and dstVertex.
+* 6. Randomly generated array - Check validity against python script ? Monte-carlo testing ?
 */
 
 #define _CRT_SECURE_NO_DEPRECATE
@@ -43,11 +44,14 @@
 
 
 int main() {
-    printf(">>> My DiGraph tool <<<\n");
+    printf(">>> My DiGraph Search Path tool <<<\n");
 
     /* -----------------------------------------------------
      *  Initialize Data 
      * -----------------------------------------------------  */
+    // Holds algorithm output, if path exists between source Vertex and destination Vertex
+    int hasPath = 0;
+
     // Integer array of values, read from input file
     int intArrayFromFile[MAX_NUM_GRAPH_NODES];
     int actualArrSize = 0;  
@@ -79,9 +83,21 @@ int main() {
     // Print Adjacency Matrix
     adjMat_Print(adjMat, actualArrSize);
     
-    // Run DFS traversal
-    myDFS_traverse(adjMat, actualArrSize);
+    // Run DFS traversal and test if path exists from source Vertex '0'
+    // to destination (actualArrSize - 1) 
+    hasPath = myDFS_isPathExists(adjMat, actualArrSize, 0, (actualArrSize - 1));
 
-    return 0;
+    // Print algorithm results
+    if (hasPath == 1) {
+        printf(">>> main : Found path\n");
+    }
+    else if (hasPath == 0) {
+        printf(">>> main : No path\n");
+    }
+    else {
+        printf(">>> main : Error\n");
+    }
+
+    return hasPath;
 }
 
