@@ -51,6 +51,8 @@ T_StackType* myStack_ctor(int capacity)
         printf(">>> initNewStack : Error initializing Stack array data\n");
         return NULL;
     }
+
+    return pStack;
 }
 
 void myStack_dtor(T_StackType* pSelf)

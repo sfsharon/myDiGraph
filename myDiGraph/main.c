@@ -30,15 +30,26 @@
 
 #define _CRT_SECURE_NO_DEPRECATE
 #include <stdio.h>
+#include <stdlib.h>
 
 // User private library headres
 #include "csvMng.h"
 #include "adjMatrix.h"
 #include "myDFS.h"
 
-
-int main() {
+int main(int argc, char **argv) {
     printf(">>> My DiGraph Search Path tool <<<\n");
+
+
+    if (argc != 2) {
+        printf("Usage : myDiGraph fileName.csv");
+        exit(1);
+    }
+	
+    // File name, which contains the integer input array 
+    /*char* myGraphFileName = "myGraph_2.csv";*/
+    char* myGraphFileName = argv[1];
+
 
     /* -----------------------------------------------------
      *  Initialize Data 
@@ -57,10 +68,6 @@ int main() {
 
     // Initialize adjacancy matrix to zeros, meaning no edges 
     adjMat_Init(adjMat);
-
-    // File name, which contains the integer input array 
-    char* myGraphFileName = "myGraph_1.csv";
-
 
     /* -----------------------------------------------------
      *  Build Adjacency Matrix
