@@ -54,9 +54,6 @@ int main(int argc, char **argv) {
     /* -----------------------------------------------------
      *  Initialize Data 
      * -----------------------------------------------------  */
-    // Holds algorithm output, if path exists between source Vertex and destination Vertex
-    int hasPath = 0;
-
     // Integer array of values, read from input file
     int intArrayFromFile[MAX_NUM_GRAPH_NODES];
     int actualArrSize = 0;  
@@ -90,19 +87,17 @@ int main(int argc, char **argv) {
     
     // Run DFS traversal and test if path exists from source Vertex '0'
     // to destination (actualArrSize - 1) 
-    hasPath = myDFS_isPathExists(adjMat, actualArrSize, 0, (actualArrSize - 1));
+    rVal = myDFS_findPath(adjMat, actualArrSize, 0, (actualArrSize - 1));
 
     // Print algorithm results
-    if (hasPath == 1) {
+    if (rVal == 0) {
         printf(">>> main : Found path\n");
     }
-    else if (hasPath == 0) {
+    else  {
         printf(">>> main : No path\n");
     }
-    else {
-        printf(">>> main : Error\n");
-    }
+    
 
-    return hasPath;
+    return rVal;
 }
 

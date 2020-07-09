@@ -25,7 +25,7 @@
 #include "adjMatrix.h"
 #include "myStack.h"
 
-int myDFS_isPathExists(int adjMat[MAX_NUM_GRAPH_NODES][MAX_NUM_GRAPH_NODES], 
+int myDFS_findPath(int adjMat[MAX_NUM_GRAPH_NODES][MAX_NUM_GRAPH_NODES], 
                    int actualArrSize, 
                    int srcVertex, 
                    int dstVertex)
@@ -51,9 +51,9 @@ int myDFS_isPathExists(int adjMat[MAX_NUM_GRAPH_NODES][MAX_NUM_GRAPH_NODES],
     /* -----------------------------------------------------
     *  Initialize function objects
     * -----------------------------------------------------  */
-    // Initialize return value to '0', meaning haven't found a route yet
+    // Initialize return value to '1', meaning haven't found a route yet
     // from source to destination vertex
-    int rVal = 0;
+    int rVal = 1;
 
     // Visited matrix, to hold if DFS has visited this node.
     int visitedNode[MAX_NUM_GRAPH_NODES];
@@ -87,7 +87,8 @@ int myDFS_isPathExists(int adjMat[MAX_NUM_GRAPH_NODES][MAX_NUM_GRAPH_NODES],
             // Visiting a node
             printf(">>> myDFS_traverse : Visiting node : %d\n", currNode);
             if (currNode == dstVertex) {
-                rVal = 1;
+                printf(">>> myDFS_traverse : Found destination node.\n");
+                rVal = 0;
                 break;
             }
 

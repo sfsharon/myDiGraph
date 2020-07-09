@@ -11,11 +11,10 @@
  * @param actualArrSize Actual number of nodes available in the adjMat object.
  * @param srcVertex The starting point of the DFS graph traversal.
  * @param dstVertex The required end point of the DFS graph traversal.
- * @return '1' if a route exists between the srcVertex and the dstVertex
- *         '0' if could not find route
- *         '-1' on error
+ * @return '0' if a route exists between the srcVertex and the dstVertex
+ *         Non zero value otherwise
  */
-int myDFS_isPathExists(int adjMat[MAX_NUM_GRAPH_NODES][MAX_NUM_GRAPH_NODES],
+int myDFS_findPath(int adjMat[MAX_NUM_GRAPH_NODES][MAX_NUM_GRAPH_NODES],
                        int actualArrSize,
                        int srcVertex,
                        int dstVertex);
