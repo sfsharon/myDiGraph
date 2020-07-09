@@ -32,7 +32,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-// User private library headres
+// User library headres
 #include "csvMng.h"
 #include "adjMatrix.h"
 #include "myDFS.h"
