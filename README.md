@@ -43,7 +43,7 @@ while (fgets(buf, MAX_BUF_SIZE, fp)) {
 ```
 
 * The Adjacency Matrix is built using the values parsed by readCSV().
- Each Vertex can have at most two neighbors (from the node outwards - This is a directed graph)
+ Each Vertex can have at most two neighbors (the edge cannot point onto the same node, unless the node value is '0')
  
 * DFS graph traversal is activated on the Adjacency Matrix.
   The DFS starting point is the first Vertex from the input non-negative Integer vector.
@@ -60,3 +60,21 @@ procedure DFS_iterative(G, v) is
                 S.push(w)
 ```
   
+* DFS algorithm uses internally a stack implementation named myStack.
+  The algorithm uses malloc to allocate the space needed for the stack.
+  Therefore, a constructor and destructor methods are provided in myStack.h file.
+  Based on implementation from https://www.techiedelight.com/stack-implementation/
+    
+# 3. Resource considerations
+* The Adjacency Matrix data structure that was chosen to represent the directed graph uses O(N^2) space complexity, which is not the best memory usage (compared to adjacency list), especially considering the fact the from each vertex, only two edges can exist at most, thus creating a sparse matrix. However, for a small number of vertices, the adjacency matrix gives a simple solution.
+* The myStack stack implementation uses a dynamically allocated array, and gives pop/push/peek operations in O(1) time complexity.
+
+# 4. Testing
+To activate the tests, please run the "run_tests.bat" file.
+The test vectors are split into two directories : 
+* myDiGraph\testVectors\noPath - Contains vector CSV input files that do not contain a valid path, the vertex values is out of bound, or an empty file.
+* myDiGraph\testVectors\Path - Contains vector CSV input files that contain a valid path
+
+
+# 5. Caveat
+Not implemented TSV or JSON
