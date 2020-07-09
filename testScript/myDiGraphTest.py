@@ -21,14 +21,15 @@ LOG_DIR                 = r"../Logs"
 # Time constant for log files (manifest, query and debugLog)    
 CURR_TIME_STRING = time.strftime("%d_%m_%Y__%H_%M_%S")
 
-print ("*** --------------------------------------------")
-print ("*** ---           myDiGraphTest.py           ---")
-print ("*** --------------------------------------------")
+print ("*** myDiGraphTest.py  \n\n")
 
 
 # ------------------------------------
 # Inputs with required path
 # ------------------------------------
+print ("*** --------------------------------------------")
+print ("***          Test Vectors with Path             ")
+print ("*** --------------------------------------------")
 for filename in os.listdir(TEST_VECTOR_PATH_DIR) :
     fileFullPath = os.path.join(TEST_VECTOR_PATH_DIR, filename)
     myDiGraphTest = subprocess.run([MY_DI_GRAPH_EXE, fileFullPath])
@@ -39,10 +40,12 @@ for filename in os.listdir(TEST_VECTOR_PATH_DIR) :
         staus = "ERROR"        
     print ("*** Tested " + fileFullPath + " " + status)    
 
-
 # ------------------------------------
 # Inputs without required path
 # ------------------------------------
+print ("\n\n*** --------------------------------------------")
+print ("***          Test Vectors without Path             ")
+print ("*** --------------------------------------------")
 for filename in os.listdir(TEST_VECTOR_NO_PATH_DIR) :
     fileFullPath = os.path.join(TEST_VECTOR_NO_PATH_DIR, filename)
     myDiGraphTest = subprocess.run([MY_DI_GRAPH_EXE, fileFullPath])
