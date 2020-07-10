@@ -1,6 +1,28 @@
 # 1. Introduction
 
-## 1.1 Scope of document
+## 1.1 Source code location
+All source code files are located at **myDiGraph\VS_Project\myDiGraph** .
+* Main module 
+  * main.c
+* CSV manager module
+  * csvMng.c
+  * csvMng.h
+* Stack class module
+  * myStack.c
+  * myStack.h
+* Adjacancy Matrix module
+  * adjMatrix.c
+  * adjMatrix.h
+* DFS traversal module
+  * myDFS.c
+  * myDFS.h
+
+## 1.2 Binary file location
+Source code was compiled using Visual Studio 2017, on a Win10 machine.
+* Solution file is at **myDiGraph\VS_ProjectmyDiGraph.sln**
+* compiled binary file is at **myDiGraph\VS_Project\x64\Debug\myDiGraph.exe**
+
+## 1.3 Scope of document
 
 This document describes a program to check if a path exists in an unsigned integer vector, according to the rule :
 
